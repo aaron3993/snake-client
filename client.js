@@ -15,13 +15,16 @@ const connect = function() {
   })
   conn.setEncoding('utf8'); 
     conn.on('connect', () => {
-      conn.write('Name: HEY')
+      conn.write('Name: Aar')
+      conn.write('Say: hey')
     })
   // stdin.on('data', (key) => {
   //     console.log(key)
   // conn.write('Move: up')
   // setTimeout(() => {
-
+  //   conn.write('Move: up')
+  // }, 30)
+  // })
   conn.on('data', data => {
     console.log(data)
   })
