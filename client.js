@@ -13,27 +13,15 @@ const connect = function() {
   conn.on('data', () => {
     console.log("Successfully connected to game server")
   })
-  conn.on('connect', () => {
-    conn.write('Name: HEY')
-  })
   conn.setEncoding('utf8'); 
+    conn.on('connect', () => {
+      conn.write('Name: HEY')
+    })
   // stdin.on('data', (key) => {
   //     console.log(key)
-  conn.write('Move: up')
-  setTimeout(() => {
-    conn.write('Move: up')
-  }, 30)
-  setTimeout(() => {
-    conn.write('Move: up')
-  }, 30)
-  setTimeout(() => {
-    conn.write('Move: up')
-  }, 30)
-  setTimeout(() => {
-    conn.write('Move: up')
-  }, 30)
+  // conn.write('Move: up')
+  // setTimeout(() => {
 
-  // })
   conn.on('data', data => {
     console.log(data)
   })
