@@ -1,4 +1,5 @@
 const net = require('net');
+const { IP, PORT } = require('./constants');
 // const stdin = process.stdin
 
 /**
@@ -6,18 +7,21 @@ const net = require('net');
  */
 const connect = function() {
   const conn = net.createConnection({ 
-    host: '135.23.222.148',
-    port: 50541,
+    host: IP,
+    port: PORT,
   });
   // interpret incoming data as text
+  conn.setEncoding('utf8'); 
   conn.on('data', () => {
     console.log("Successfully connected to game server")
   })
-  conn.setEncoding('utf8'); 
-    conn.on('connect', () => {
-      conn.write('Name: Aar')
-      conn.write('Say: hey')
-    })
+  conn.on('connect', () => {
+    conn.write('Name: Aar')
+    conn.write('Say: hey')
+  })
+  conn.on('data', data => {
+    console.log(data)
+  })
   // stdin.on('data', (key) => {
   //     console.log(key)
   // conn.write('Move: up')
@@ -25,9 +29,6 @@ const connect = function() {
   //   conn.write('Move: up')
   // }, 30)
   // })
-  conn.on('data', data => {
-    console.log(data)
-  })
   return conn;
 }
 
